@@ -6,7 +6,6 @@ A simple calculator application built with React, TypeScript, Vite, and Tailwind
 
 - Basic arithmetic operations: addition, subtraction, multiplication, division.
 - Clear button to reset the input.
-- Responsive design.
 
 ## Technologies Used
 
