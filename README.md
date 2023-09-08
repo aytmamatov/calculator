@@ -37,14 +37,9 @@ To run this project locally, follow these steps:
 3. Start the development server:
 
    ```bash
-   npm run dev
+   npm run start
    # or
-   yarn dev
+   yarn
    ```
 
 4. Open your browser and navigate to [http://localhost:5173](http://localhost:5173) to use the calculator.
-
-## Usage
-
-- Click the calculator buttons to input numbers and perform calculations.
-- Click the "C" button to clear the input field.
