@@ -14,6 +14,10 @@ function Calculator() {
     dispatch({ type: CALC_ACTIONS.CLEAR });
   }
 
+  function evaluateCalc() {
+    dispatch({ type: CALC_ACTIONS.EVALUATE });
+  }
+
   return (
     <div className="container">
       <div className="prev">
@@ -45,8 +49,10 @@ function Calculator() {
 
         <DigitButton digit="0" dispatch={dispatch} />
         <DigitButton digit="00" dispatch={dispatch} />
-        <OperationButton operation="." dispatch={dispatch} />
-        <OperationButton operation="=" dispatch={dispatch} />
+        <DigitButton digit="." dispatch={dispatch} />
+        <button className="operator" onClick={evaluateCalc}>
+          =
+        </button>
       </div>
     </div>
   );
