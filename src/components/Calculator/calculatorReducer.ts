@@ -45,7 +45,7 @@ export function calculatorReducer(
       }
       return { ...state, currentInput: state.currentInput + payload!.digit };
     case CALC_ACTIONS.CHOOSE_OPERATION:
-      if (!state.prevInput) {
+      if (!state.prevInput && state.currentInput) {
         return {
           ...state,
           prevInput: state.currentInput,
