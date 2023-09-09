@@ -24,6 +24,7 @@ body {
 }
 
 .display {
+  height: 30px;
   width: 100%;
   outline: none;
   border: none;
@@ -32,6 +33,10 @@ body {
   font-size: 25px;
   color: #000e1a;
   pointer-events: none;
+}
+
+.prev {
+  text-align: right;
 }
 
 .buttons {

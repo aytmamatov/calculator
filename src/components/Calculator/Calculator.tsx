@@ -1,37 +1,29 @@
 import { useReducer } from "react";
-import { CALC_ACTIONS } from "./actions";
-import { CalcAction, CalcState } from "./types";
-import "./calculator.scss";
+
 import DigitButton from "./DigitButton";
 import OperationButton from "./OperationButton";
+import { calculatorReducer, initialCalcState } from "./calculatorReducer";
+import { CALC_ACTIONS } from "./actions";
 
-function calculatorReducer(
-  state: CalcState,
-  { type, payload }: CalcAction
-): CalcState {
-  switch (type) {
-    case CALC_ACTIONS.ADD_DIGIT:
-      return { ...state, currentInput: payload.digit! };
-    default:
-      return state;
-  }
-}
-
-const initialState: CalcState = {
-  currentInput: "",
-  prevInput: "",
-  operation: "",
-};
+import "./calculator.scss";
 
 function Calculator() {
-  const [state, dispatch] = useReducer(calculatorReducer, initialState);
+  const [state, dispatch] = useReducer(calculatorReducer, initialCalcState);
+
+  function clearCalc() {
+    dispatch({ type: CALC_ACTIONS.CLEAR });
+  }
 
   return (
     <div className="container">
+      <div className="prev">
+        {state.prevInput} {state.operation}
+      </div>
       <div className="display">{state.currentInput}</div>
-
       <div className="buttons">
-        <OperationButton operation="AC" dispatch={dispatch} />
+        <button className="operator" onClick={clearCalc}>
+          AC
+        </button>
         <OperationButton operation="DEL" dispatch={dispatch} />
         <OperationButton operation="%" dispatch={dispatch} />
         <OperationButton operation="/" dispatch={dispatch} />
@@ -51,9 +43,9 @@ function Calculator() {
         <DigitButton digit="3" dispatch={dispatch} />
         <OperationButton operation="+" dispatch={dispatch} />
 
-        <button data-value="0">0</button>
-        <button data-value="00">00</button>
-        <button data-value=".">.</button>
+        <DigitButton digit="0" dispatch={dispatch} />
+        <DigitButton digit="00" dispatch={dispatch} />
+        <OperationButton operation="." dispatch={dispatch} />
         <OperationButton operation="=" dispatch={dispatch} />
       </div>
     </div>

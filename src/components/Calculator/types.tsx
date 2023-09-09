@@ -1,6 +1,6 @@
 export interface CalcAction {
   type: string;
-  payload: {
+  payload?: {
     digit?: string;
     operation?: string;
   };
