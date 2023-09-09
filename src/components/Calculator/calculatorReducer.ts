@@ -17,6 +17,10 @@ function evaluate({ currentInput, prevInput, operation }: CalcState) {
   return "";
 }
 
+function deleteSymbols(state: CalcState, propertyName: keyof CalcState) {
+  return { ...state, [propertyName]: state[propertyName].slice(0, -1) };
+}
+
 export function calculatorReducer(
   state: CalcState,
   { type, payload }: CalcAction
@@ -68,7 +72,20 @@ export function calculatorReducer(
         };
       }
       return state;
+    case CALC_ACTIONS.DELETE_DIGIT: {
+      const propertiesToDelete: (keyof CalcState)[] = [
+        "currentInput",
+        "operation",
+        "prevInput",
+      ];
 
+      for (const prop of propertiesToDelete) {
+        if (state[prop]) {
+          return deleteSymbols(state, prop);
+        }
+      }
+      return state;
+    }
     default:
       return state;
   }

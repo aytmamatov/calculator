@@ -18,6 +18,10 @@ function Calculator() {
     dispatch({ type: CALC_ACTIONS.EVALUATE });
   }
 
+  function deleteNumber() {
+    dispatch({ type: CALC_ACTIONS.DELETE_DIGIT });
+  }
+
   return (
     <div className="container">
       <div className="prev">
@@ -28,7 +32,9 @@ function Calculator() {
         <button className="operator" onClick={clearCalc}>
           AC
         </button>
-        <OperationButton operation="DEL" dispatch={dispatch} />
+        <button className="operator" onClick={deleteNumber}>
+          DEL
+        </button>
         <OperationButton operation="%" dispatch={dispatch} />
         <OperationButton operation="/" dispatch={dispatch} />
 
